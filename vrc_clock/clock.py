@@ -3,7 +3,6 @@ from osc_base.osc_base import osc_base
 from pythonosc import udp_client
 
 #Define all parameter name used in this class at here
-AVATAR_PARAM_PATH = "/avatar/parameters/"
 PARAM_NAME_CLOCK_SEC_TOGGLE = "clock_sec_toggle"
 PARAM_NAME_CLOCK_MIN_TOGGLE = "clock_min_toggle"
 PARAM_NAME_CLOCK_HOUR_TOGGLE = "clock_hour_toggle"
@@ -12,10 +11,10 @@ PARAM_NAME_CLOCK_ROTATE_RATE = "clock_rotate_rate"
 class vrc_clock(osc_base):
     def __init__(self,client:udp_client.SimpleUDPClient):
         super().__init__(client)
-        self.clock_sec_toggle_addr = AVATAR_PARAM_PATH + PARAM_NAME_CLOCK_SEC_TOGGLE
-        self.clock_min_toggle_addr = AVATAR_PARAM_PATH + PARAM_NAME_CLOCK_MIN_TOGGLE
-        self.clock_hour_toggle_addr = AVATAR_PARAM_PATH + PARAM_NAME_CLOCK_HOUR_TOGGLE
-        self.clock_rotate_rate_addr = AVATAR_PARAM_PATH + PARAM_NAME_CLOCK_ROTATE_RATE
+        self.clock_sec_toggle_addr = self.addr + PARAM_NAME_CLOCK_SEC_TOGGLE
+        self.clock_min_toggle_addr = self.addr + PARAM_NAME_CLOCK_MIN_TOGGLE
+        self.clock_hour_toggle_addr = self.addr + PARAM_NAME_CLOCK_HOUR_TOGGLE
+        self.clock_rotate_rate_addr = self.addr + PARAM_NAME_CLOCK_ROTATE_RATE
     
     def calc_perc(self)->list:
         #Get the current time

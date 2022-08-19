@@ -3,10 +3,12 @@ from pythonosc import udp_client
 import json
 import datetime
 
+AVATAR_PARAM_PATH = "/avatar/parameters/"
+
 class osc_base():
-    def __init__(self, client:udp_client.SimpleUDPClient,config_path:str):
+    def __init__(self, client:udp_client.SimpleUDPClient):
         self.client:udp_client.SimpleUDPClient = client
-        self.addr_dict:dict = self.addr_parser(config_path)
+        self.addr = AVATAR_PARAM_PATH
     
     def addr_parser(self,config_path:str):
         with open(config_path,encoding='utf-8-sig') as f:
